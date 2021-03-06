@@ -9,6 +9,12 @@ import Foundation
 import UIKit
 
 
+//latitude
+//longtitude
+
+
+//location overview
+
 struct Recommendations: Equatable{
     var name: String
     var doRec: Bool

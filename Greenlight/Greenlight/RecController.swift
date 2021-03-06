@@ -17,7 +17,7 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     func updateFarmLabel() {
         if(SelectedCrop.contains(visibleProduct)){
-            farmButton.setTitle("Check my \(visibleProduct.name) farm", for: .normal)
+            farmButton.setTitle("Check My \(visibleProduct.name) Farm", for: .normal)
             farmButton.isHidden = false
         }else{
             farmButton.isHidden = true

@@ -13,17 +13,18 @@ import CoreLocation
 class LocationController: UIViewController, CLLocationManagerDelegate {
     var  locationManager = CLLocationManager()
     var navBar: UIView!
+    var nextButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
         
         setupNavigation()
         setupText()
         setupButton()
+        setupNextButton()
     }
     
     func enableLocationManager() {
@@ -32,6 +33,17 @@ class LocationController: UIViewController, CLLocationManagerDelegate {
     
     func disableLocationManager() {
         locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        GlobalLatitude = locations[0].coordinate.latitude
+        GlobalLongtitude = locations[0].coordinate.longitude
+        
+        if(GlobalLongtitude != 0){
+            print("stopped location")
+            print("lltitude: \(GlobalLongtitude), \(GlobalLatitude)")
+            locationManager.stopUpdatingLocation()
+        }
     }
     
     func setupNavigation(){
@@ -96,8 +108,42 @@ class LocationController: UIViewController, CLLocationManagerDelegate {
         button.addTarget(self, action: #selector(pressedEnable), for: .touchUpInside)
     }
     
-    @objc private func pressedEnable(_ sender: Any){
-        let vc = RecController()
+    @objc private func pressedEnable(_ sender: UIButton){
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined:
+                locationManager.requestAlwaysAuthorization()
+                locationManager.startUpdatingLocation()
+                nextButton.isHidden = false
+                sender.isHidden = true
+             default:
+                let vc = nkpController()
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+                }
+        } else {
+            print("Location services are not enabled")
+        }
+    }
+    
+    func setupNextButton(){
+        nextButton = setGreenButton("Continue")
+        nextButton.isHidden = true
+        view.addSubview(nextButton)
+        
+        NSLayoutConstraint.activate([
+            nextButton.widthAnchor.constraint(equalToConstant: 267),
+            nextButton.heightAnchor.constraint(equalToConstant: 51),
+            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80)
+        
+        ])
+        
+        nextButton.addTarget(self, action: #selector(pressedEnable), for: .touchUpInside)
+    }
+    
+    @objc private func pressedNext(_ sender: Any){
+        let vc = nkpController()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
@@ -107,3 +153,28 @@ class LocationController: UIViewController, CLLocationManagerDelegate {
 
 }
 
+
+//let parameters: [String: AnyObject] = [
+//    "IdQuiz" : 102,
+//    "IdUser" : "iosclient",
+//    "User" : "iosclient",
+//    "List": [
+//        [
+//            "IdQuestion" : 5,
+//            "IdProposition": 2,
+//            "Time" : 32
+//        ],
+//        [
+//            "IdQuestion" : 4,
+//            "IdProposition": 3,
+//            "Time" : 9
+//        ]
+//    ]
+//]
+//
+//Alamofire.request(.POST, "http://myserver.com", parameters: parameters, encoding: .JSON)
+//    .responseJSON { request, response, JSON, error in
+//        print(response)
+//        print(JSON)
+//        print(error)
+//    }

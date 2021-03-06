@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,6 +39,10 @@
 		2A6335F625F39050006433DF /* RecCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6335F525F39050006433DF /* RecCollectionViewCell.swift */; };
 		2A6335FB25F3B09B006433DF /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6335FA25F3B09B006433DF /* ProductController.swift */; };
 		2A63360325F3C42E006433DF /* FarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63360225F3C42E006433DF /* FarmController.swift */; };
+		2A63361225F3F650006433DF /* nkpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63361125F3F650006433DF /* nkpController.swift */; };
+		59A218EC1E61BBB006BD0795 /* Pods_GreenlightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4382EA96822BC87B36FDED0F /* Pods_GreenlightTests.framework */; };
+		A0F2A9DCEFF0CAF373F1B07A /* Pods_Greenlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10AA4706C7DB221560A46E93 /* Pods_Greenlight.framework */; };
+		BD36F2AC8EFD3E55A3DB2D59 /* Pods_Greenlight_GreenlightUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A1FF75BE77EEE22A89394E /* Pods_Greenlight_GreenlightUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		089D382FD8389C65524EAD0D /* Pods-Greenlight-GreenlightUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greenlight-GreenlightUITests.release.xcconfig"; path = "Target Support Files/Pods-Greenlight-GreenlightUITests/Pods-Greenlight-GreenlightUITests.release.xcconfig"; sourceTree = "<group>"; };
+		10A1FF75BE77EEE22A89394E /* Pods_Greenlight_GreenlightUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Greenlight_GreenlightUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10AA4706C7DB221560A46E93 /* Pods_Greenlight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Greenlight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A63357425F33708006433DF /* Greenlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Greenlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A63357725F33708006433DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A63357925F33708006433DF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +104,13 @@
 		2A6335F525F39050006433DF /* RecCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A6335FA25F3B09B006433DF /* ProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
 		2A63360225F3C42E006433DF /* FarmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmController.swift; sourceTree = "<group>"; };
+		2A63361125F3F650006433DF /* nkpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nkpController.swift; sourceTree = "<group>"; };
+		327A23B0F3F49D92DE23354F /* Pods-Greenlight-GreenlightUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greenlight-GreenlightUITests.debug.xcconfig"; path = "Target Support Files/Pods-Greenlight-GreenlightUITests/Pods-Greenlight-GreenlightUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4382EA96822BC87B36FDED0F /* Pods_GreenlightTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GreenlightTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66181C197813153EA118DA3C /* Pods-Greenlight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greenlight.release.xcconfig"; path = "Target Support Files/Pods-Greenlight/Pods-Greenlight.release.xcconfig"; sourceTree = "<group>"; };
+		7636B0F53583D6901739012D /* Pods-Greenlight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greenlight.debug.xcconfig"; path = "Target Support Files/Pods-Greenlight/Pods-Greenlight.debug.xcconfig"; sourceTree = "<group>"; };
+		C355CCBAD939E522E69CD94C /* Pods-GreenlightTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreenlightTests.release.xcconfig"; path = "Target Support Files/Pods-GreenlightTests/Pods-GreenlightTests.release.xcconfig"; sourceTree = "<group>"; };
+		E5B345A656C48A545BFAF0E8 /* Pods-GreenlightTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreenlightTests.debug.xcconfig"; path = "Target Support Files/Pods-GreenlightTests/Pods-GreenlightTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0F2A9DCEFF0CAF373F1B07A /* Pods_Greenlight.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59A218EC1E61BBB006BD0795 /* Pods_GreenlightTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,12 +134,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD36F2AC8EFD3E55A3DB2D59 /* Pods_Greenlight_GreenlightUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AFFEC111EE7D746E9EB1093 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7636B0F53583D6901739012D /* Pods-Greenlight.debug.xcconfig */,
+				66181C197813153EA118DA3C /* Pods-Greenlight.release.xcconfig */,
+				327A23B0F3F49D92DE23354F /* Pods-Greenlight-GreenlightUITests.debug.xcconfig */,
+				089D382FD8389C65524EAD0D /* Pods-Greenlight-GreenlightUITests.release.xcconfig */,
+				E5B345A656C48A545BFAF0E8 /* Pods-GreenlightTests.debug.xcconfig */,
+				C355CCBAD939E522E69CD94C /* Pods-GreenlightTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		2A63356B25F33708006433DF = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +161,8 @@
 				2A63358D25F3370B006433DF /* GreenlightTests */,
 				2A63359825F3370B006433DF /* GreenlightUITests */,
 				2A63357525F33708006433DF /* Products */,
+				1AFFEC111EE7D746E9EB1093 /* Pods */,
+				B7639155464F19DC45AAA864 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +183,7 @@
 				2A63357725F33708006433DF /* AppDelegate.swift */,
 				2A63357925F33708006433DF /* SceneDelegate.swift */,
 				2A63357B25F33708006433DF /* LocationController.swift */,
+				2A63361125F3F650006433DF /* nkpController.swift */,
 				2A6335F025F34C0D006433DF /* RecController.swift */,
 				2A6335F525F39050006433DF /* RecCollectionViewCell.swift */,
 				2A6335FA25F3B09B006433DF /* ProductController.swift */,
@@ -208,6 +241,16 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		B7639155464F19DC45AAA864 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10AA4706C7DB221560A46E93 /* Pods_Greenlight.framework */,
+				10A1FF75BE77EEE22A89394E /* Pods_Greenlight_GreenlightUITests.framework */,
+				4382EA96822BC87B36FDED0F /* Pods_GreenlightTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,9 +258,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A63359E25F3370B006433DF /* Build configuration list for PBXNativeTarget "Greenlight" */;
 			buildPhases = (
+				CFE483F7F56754287466DBAE /* [CP] Check Pods Manifest.lock */,
 				2A63357025F33708006433DF /* Sources */,
 				2A63357125F33708006433DF /* Frameworks */,
 				2A63357225F33708006433DF /* Resources */,
+				0A2D5CC7FDA0FC22D9BDF8FF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -232,6 +277,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A6335A125F3370B006433DF /* Build configuration list for PBXNativeTarget "GreenlightTests" */;
 			buildPhases = (
+				8C3C92FEF6E7E03EBFCBD34B /* [CP] Check Pods Manifest.lock */,
 				2A63358625F3370B006433DF /* Sources */,
 				2A63358725F3370B006433DF /* Frameworks */,
 				2A63358825F3370B006433DF /* Resources */,
@@ -250,9 +296,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A6335A425F3370B006433DF /* Build configuration list for PBXNativeTarget "GreenlightUITests" */;
 			buildPhases = (
+				8434898866691C6F6A91612D /* [CP] Check Pods Manifest.lock */,
 				2A63359125F3370B006433DF /* Sources */,
 				2A63359225F3370B006433DF /* Frameworks */,
 				2A63359325F3370B006433DF /* Resources */,
+				0F2AEEA5146792F95842EB8E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -352,6 +400,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A2D5CC7FDA0FC22D9BDF8FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Greenlight/Pods-Greenlight-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Greenlight/Pods-Greenlight-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Greenlight/Pods-Greenlight-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0F2AEEA5146792F95842EB8E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Greenlight-GreenlightUITests/Pods-Greenlight-GreenlightUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Greenlight-GreenlightUITests/Pods-Greenlight-GreenlightUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Greenlight-GreenlightUITests/Pods-Greenlight-GreenlightUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8434898866691C6F6A91612D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Greenlight-GreenlightUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C3C92FEF6E7E03EBFCBD34B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GreenlightTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFE483F7F56754287466DBAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Greenlight-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2A63357025F33708006433DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -362,6 +513,7 @@
 				2A63357825F33708006433DF /* AppDelegate.swift in Sources */,
 				2A6335FB25F3B09B006433DF /* ProductController.swift in Sources */,
 				2A6335BC25F34006006433DF /* PublicVars.swift in Sources */,
+				2A63361225F3F650006433DF /* nkpController.swift in Sources */,
 				2A63357A25F33708006433DF /* SceneDelegate.swift in Sources */,
 				2A6335F125F34C0D006433DF /* RecController.swift in Sources */,
 				2A6335F625F39050006433DF /* RecCollectionViewCell.swift in Sources */,
@@ -529,12 +681,14 @@
 		};
 		2A63359F25F3370B006433DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7636B0F53583D6901739012D /* Pods-Greenlight.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PW95H7HH29;
 				INFOPLIST_FILE = Greenlight/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,12 +702,14 @@
 		};
 		2A6335A025F3370B006433DF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66181C197813153EA118DA3C /* Pods-Greenlight.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PW95H7HH29;
 				INFOPLIST_FILE = Greenlight/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -567,6 +723,7 @@
 		};
 		2A6335A225F3370B006433DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5B345A656C48A545BFAF0E8 /* Pods-GreenlightTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -589,6 +746,7 @@
 		};
 		2A6335A325F3370B006433DF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C355CCBAD939E522E69CD94C /* Pods-GreenlightTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -611,6 +769,7 @@
 		};
 		2A6335A525F3370B006433DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 327A23B0F3F49D92DE23354F /* Pods-Greenlight-GreenlightUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -631,6 +790,7 @@
 		};
 		2A6335A625F3370B006433DF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 089D382FD8389C65524EAD0D /* Pods-Greenlight-GreenlightUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
