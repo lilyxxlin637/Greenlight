@@ -58,8 +58,8 @@ class nkpController: UIViewController, UITextFieldDelegate {
         let nlabel = setRegText("Nitrogen:")
         let plabel = setRegText("Phosphorous:")
         let klabel = setRegText("Potassium:")
-        
-        tempField = setTextfield("F")
+    
+        tempField = setTextfield("C")
         humField = setTextfield("%")
         phfield = setTextfield("PH")
         nfield = setTextfield("N")
@@ -74,11 +74,15 @@ class nkpController: UIViewController, UITextFieldDelegate {
         autoFill.addTarget(self, action: #selector(pressedAutoFill), for: .touchUpInside)
         autoFill.translatesAutoresizingMaskIntoConstraints = false
         
+        view.addSubview(tempLabel)
+        view.addSubview(humLabel)
         view.addSubview(phlabel)
         view.addSubview(nlabel)
         view.addSubview(plabel)
         view.addSubview(klabel)
         
+        view.addSubview(tempField)
+        view.addSubview(humField)
         view.addSubview(phfield)
         view.addSubview(nfield)
         view.addSubview(pfield)
@@ -87,8 +91,19 @@ class nkpController: UIViewController, UITextFieldDelegate {
         view.addSubview(autoFill)
         
         NSLayoutConstraint.activate([
+            
+            tempLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            tempLabel.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 120),
+            tempLabel.widthAnchor.constraint(equalToConstant: 180),
+            tempLabel.heightAnchor.constraint(equalToConstant: 27),
+            
+            humLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            humLabel.topAnchor.constraint(equalTo: tempLabel.bottomAnchor, constant: 5),
+            humLabel.widthAnchor.constraint(equalToConstant: 180),
+            humLabel.heightAnchor.constraint(equalToConstant: 27),
+            
             phlabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            phlabel.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 130),
+            phlabel.topAnchor.constraint(equalTo: humLabel.bottomAnchor, constant: 5),
             phlabel.widthAnchor.constraint(equalToConstant: 180),
             phlabel.heightAnchor.constraint(equalToConstant: 27),
             
@@ -107,8 +122,20 @@ class nkpController: UIViewController, UITextFieldDelegate {
             klabel.widthAnchor.constraint(equalToConstant: 180),
             klabel.heightAnchor.constraint(equalToConstant: 27),
             
+            
+            
+            tempField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            tempField.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 120),
+            tempField.widthAnchor.constraint(equalToConstant: 100),
+            tempField.heightAnchor.constraint(equalToConstant: 27),
+            
+            humField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            humField.topAnchor.constraint(equalTo: tempField.bottomAnchor, constant: 5),
+            humField.widthAnchor.constraint(equalToConstant: 100),
+            humField.heightAnchor.constraint(equalToConstant: 27),
+            
             phfield.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            phfield.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 130),
+            phfield.topAnchor.constraint(equalTo: humField.bottomAnchor, constant: 5),
             phfield.widthAnchor.constraint(equalToConstant: 100),
             phfield.heightAnchor.constraint(equalToConstant: 27),
             
@@ -145,6 +172,8 @@ class nkpController: UIViewController, UITextFieldDelegate {
         doneToolbar.items = items
         doneToolbar.sizeToFit()
 
+        tempField.inputAccessoryView = doneToolbar
+        humField.inputAccessoryView = doneToolbar
         phfield.inputAccessoryView = doneToolbar
         pfield.inputAccessoryView = doneToolbar
         nfield.inputAccessoryView = doneToolbar
@@ -173,22 +202,27 @@ class nkpController: UIViewController, UITextFieldDelegate {
         let vc = RecController()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
-        print("\(GlobalPH), \(GlobalP), \(GlobalN), \(GlobalK)")
+        print("\(GlobalTemp), \(GlobalHum), \(GlobalPH), \(GlobalP), \(GlobalN), \(GlobalK)")
+
         postAlarmo()
 
     }
     
     @objc private func pressedAutoFill(_ sender: Any){
+        tempField.text = "24.3"
+        humField.text = "22.0"
         phfield.text = "6.5"
         pfield.text = "42"
         nfield.text = "9.0"
         kfield.text = "43"
         
+        GlobalTemp = 24.3
+        GlobalHum = 22.0
         GlobalPH = 6.5
         GlobalP = 42
         GlobalN = 9.0
         GlobalK = 43
-        print("\(GlobalPH), \(GlobalP), \(GlobalN), \(GlobalK)")
+        print("\(GlobalTemp), \(GlobalHum), \(GlobalPH), \(GlobalP), \(GlobalN), \(GlobalK)")
 
     }
     
@@ -199,7 +233,14 @@ class nkpController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         let text = textField.text ?? "No test"
-
+        
+        if(textField.placeholder == "C"){
+            GlobalPH = Double(text) ?? 24.3
+        }
+        if(textField.placeholder == "%"){
+            GlobalPH = Double(text) ?? 22.0
+        }
+        
         if(textField.placeholder == "PH"){
             GlobalPH = Double(text) ?? 6.5
         }
@@ -217,10 +258,10 @@ class nkpController: UIViewController, UITextFieldDelegate {
     
     func postAlarmo(){
         let parameters: [String: Any] = [
-            "latitude": GlobalLongtitude,
+            "latitude": GlobalLatitude,
             "longitude": GlobalLongtitude,
-            "temperature": 24.3,
-            "humidity": 22.0,
+            "temperature": GlobalTemp,
+            "humidity": GlobalHum,
             "ph": GlobalPH,
             "nitrogen": GlobalN,
             "phosphorous": GlobalP,
@@ -229,43 +270,18 @@ class nkpController: UIViewController, UITextFieldDelegate {
         
         let url = "http://cornell-greenlight-backend.azurewebsites.net/api/recommend-crop"
         
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate()
             .responseString { response in
                 switch response.result {
-                                case .success:
-                                    debugPrint(response)
-                                    break
-                                case .failure(let error):
-                                    debugPrint(error)
-                                }
+                case .success:
+                    debugPrint(response)
+                    break
+                case .failure(let error):
+                    debugPrint(error)
+                    
+                }
             }
     }
     
 
 }
-
-
-//let parameters: [String: AnyObject] = [
-//    "IdQuiz" : 102,
-//    "IdUser" : "iosclient",
-//    "User" : "iosclient",
-//    "List": [
-//        [
-//            "IdQuestion" : 5,
-//            "IdProposition": 2,
-//            "Time" : 32
-//        ],
-//        [
-//            "IdQuestion" : 4,
-//            "IdProposition": 3,
-//            "Time" : 9
-//        ]
-//    ]
-//]
-//
-//Alamofire.request(.POST, "http://myserver.com", parameters: parameters, encoding: .JSON)
-//    .responseJSON { request, response, JSON, error in
-//        print(response)
-//        print(JSON)
-//        print(error)
-//    }

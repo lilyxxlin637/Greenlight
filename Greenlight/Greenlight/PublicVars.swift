@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 var SelectedCrop = [Recommendations]()
+var GlobalTemp = 0.0
+var GlobalHum = 0.0
 var GlobalLatitude = 0.0
 var GlobalLongtitude = 0.0
 var GlobalPH = 0.0
