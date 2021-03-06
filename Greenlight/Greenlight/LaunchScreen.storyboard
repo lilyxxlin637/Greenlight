@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -34,7 +39,7 @@
                                     <constraint firstAttribute="height" constant="43" id="V55-mR-wAz"/>
                                     <constraint firstAttribute="width" constant="176" id="iMf-JG-rc6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
