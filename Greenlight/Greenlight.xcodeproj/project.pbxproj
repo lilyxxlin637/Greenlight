@@ -36,6 +36,7 @@
 		2A6335E725F3481B006433DF /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A6335D425F3481B006433DF /* Poppins-ExtraLightItalic.ttf */; };
 		2A6335E825F3481B006433DF /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A6335D525F3481B006433DF /* Poppins-SemiBold.ttf */; };
 		2A6335F125F34C0D006433DF /* RecController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6335F025F34C0D006433DF /* RecController.swift */; };
+		2A6335F625F39050006433DF /* RecCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6335F525F39050006433DF /* RecCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		2A6335D425F3481B006433DF /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		2A6335D525F3481B006433DF /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		2A6335F025F34C0D006433DF /* RecController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecController.swift; sourceTree = "<group>"; };
+		2A6335F525F39050006433DF /* RecCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				2A63357925F33708006433DF /* SceneDelegate.swift */,
 				2A63357B25F33708006433DF /* LocationController.swift */,
 				2A6335F025F34C0D006433DF /* RecController.swift */,
+				2A6335F525F39050006433DF /* RecCollectionViewCell.swift */,
 				2A6335EC25F34822006433DF /* Font */,
 				2A63357D25F33708006433DF /* Main.storyboard */,
 				2A6335AD25F33BC5006433DF /* LaunchScreen.storyboard */,
@@ -353,6 +356,7 @@
 				2A6335BC25F34006006433DF /* PublicVars.swift in Sources */,
 				2A63357A25F33708006433DF /* SceneDelegate.swift in Sources */,
 				2A6335F125F34C0D006433DF /* RecController.swift in Sources */,
+				2A6335F625F39050006433DF /* RecCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

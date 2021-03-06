@@ -56,7 +56,7 @@ class LocationController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setupText(){
-        let label = setRegText("Start looking for crop recommendations. \nEnable locations trackers to allow for weather and group analysis!")
+        let label = setRegText("Start looking for crop recommendations. \nEnable locations trackers to allow for weather and ground analysis!")
         label.textAlignment = .center
         
         let image = UIImageView()
