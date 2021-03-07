@@ -7,10 +7,11 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 
 
-struct Recommendations: Equatable, Decodable{
+struct Recommendations: Equatable{
     var name: String
     var doRec: Bool
     var reason: String
@@ -20,6 +21,8 @@ struct Recommendations: Equatable, Decodable{
     var nitrogen: String = "90"
     var phosphorous: String = "42"
     var potassium: String = "43"
+    var yield: String = ""
+    var profit: String = ""
     
     init(_ productName: String, rec: Bool){
         name = productName
@@ -31,31 +34,5 @@ struct Recommendations: Equatable, Decodable{
         return lhs.name == rhs.name
     }
 }
+    
 
-
-func postAlarmo(){
-    let parameters: [String: Any] = [
-        "latitude": GlobalLatitude,
-        "longitude": GlobalLongtitude,
-//            "temperature": GlobalTemp,
-//            "humidity": GlobalHum,
-//            "ph": GlobalPH,
-//            "nitrogen": GlobalN,
-//            "phosphorous": GlobalP,
-//            "potassium": GlobalK,
-    ]
-    
-    let url = "https://cornell-greenlight-backend.azurewebsites.net/api/recommend-crop"
-    
-    AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate()
-        .responseJSON { response in
-            switch response.result {
-            case .success:
-//                debugPrint(response)
-                break
-            case .failure(let error):
-                debugPrint(error)
-            }
-        }
-    
-}

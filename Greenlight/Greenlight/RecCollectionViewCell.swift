@@ -31,18 +31,16 @@ class RecCollectionViewCell: UICollectionViewCell{
     }
     
     func setupView(_ recID: Int){
-        print("id:\(recID)")
         let rec = allCrops[recID]
-        print(rec)
 
         let productLabel = setBoldText(rec.name)
-        productLabel.font = UIFont(name: "Poppins-Bold", size: 50)
+        productLabel.font = UIFont(name: "Poppins-Bold", size: 40)
         productLabel.textAlignment = .center
         self.layer.borderWidth = 5
 
-        let reasonLabel = setBoldText(rec.reason)
-        reasonLabel.font = UIFont(name: "Poppins-Bold", size: 20)
-
+        let reasonLabel = setBoldText("\(rec.profit)\nYield Prediction: \(rec.yield) T/yr")
+        reasonLabel.font = UIFont(name: "Poppins-Medium", size: 18)
+        reasonLabel.numberOfLines = 0
         reasonLabel.textAlignment = .center
         
         let recLabel = setBoldText("I want to plant")
@@ -70,15 +68,15 @@ class RecCollectionViewCell: UICollectionViewCell{
             productLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             productLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             productLabel.heightAnchor.constraint(equalToConstant: 50),
-            productLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 115),
+            productLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100),
             
             reasonLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             reasonLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            reasonLabel.heightAnchor.constraint(equalToConstant: 50),
+            reasonLabel.heightAnchor.constraint(equalToConstant: 80),
             reasonLabel.topAnchor.constraint(equalTo: productLabel.bottomAnchor, constant: 0),
             
             recImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            recImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            recImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             recImage.widthAnchor.constraint(equalToConstant: 140),
             recImage.heightAnchor.constraint(equalToConstant: 168)
         ])

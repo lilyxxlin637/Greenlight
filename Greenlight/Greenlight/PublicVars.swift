@@ -17,6 +17,14 @@ var GlobalN = 0.0
 var GlobalP = 0.0
 var GlobalK = 0.0
 
+
+var Globalhumidity_yr_avg = ""
+var Globallocation_name = ""
+var Globaltemp_current = ""
+var Globaltemp_yr_avg = ""
+var Globalweather_current = ""
+
+
 let UIGreen = UIColor(red: 0.907, green: 0.958, blue: 0.843, alpha: 1)
 let UIBorderGreen = UIColor(red: 0.475, green: 0.788, blue: 0.71, alpha: 1)
 let UIRed = UIColor(red: 0.82, green: 0.443, blue: 0.431, alpha: 1)

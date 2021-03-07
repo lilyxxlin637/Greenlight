@@ -7,7 +7,7 @@ target 'Greenlight' do
 
   # Pods for Greenlight
   pod 'Alamofire', '~> 5.2'
-
+  pod 'SwiftyJSON', '~> 4.0'
 
   target 'GreenlightTests' do
     inherit! :search_paths

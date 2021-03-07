@@ -7,27 +7,31 @@
 
 import Foundation
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 protocol UpdateProtocol{
     func updateFarmLabel()
 }
 
 
-var allCrops:[Recommendations] = [Recommendations("Corn",rec:false), Recommendations("Grape",rec:false), Recommendations("Apple", rec:false)]
+var allCrops:[Recommendations] = []//[Recommendations("Corn",rec:false), Recommendations("Grape",rec:false), Recommendations("Apple", rec:false)]
 
 class RecController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UpdateProtocol{
     
     func updateFarmLabel() {
+        if(allCrops[visibleProduct].doRec){
+            farmButton.isHidden = false
+        }else{
+            farmButton.isHidden = true
+        }
         recCollectionView.reloadData()
     }
-    
-    
-
-    private var recCollectionView: UICollectionView!
     
     private var navBar: UIView!
     private var farmButton: UIButton!
     private var visibleProduct: Int!
+    var recCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,7 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
         
         setupNavigation()
         setupCollectionView()
+        postAlarmo()
         visibleProduct = 0
     }
     
@@ -65,7 +70,7 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     private func setupCollectionView(){
         farmButton = UIButton()
-        farmButton.setTitle("Check My Farm", for: .normal)
+        farmButton.setTitle("Check My farm", for: .normal)
         farmButton.titleLabel?.font = UIFont(name: "Poppins-Bold", size: 20)
         farmButton.contentHorizontalAlignment = .right
         farmButton.setTitleColor(.black, for: .normal)
@@ -80,7 +85,7 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         
-        self.recCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        recCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         recCollectionView.translatesAutoresizingMaskIntoConstraints = false
         recCollectionView.backgroundColor = .white
         recCollectionView.register(RecCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
@@ -130,17 +135,17 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        visibleProduct = indexPath.row
-//        print("visible product: \(visibleProduct)")
-//        if allCrops[visibleProduct].doRec{
-//            print("in \(indexPath)")
-//            farmButton.setTitle("Check My \(allCrops[visibleProduct].name) Farm", for: .normal)
-//            farmButton.isHidden = false
-//        }else{
-//            farmButton.isHidden = true
-//        }
-//    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        visibleProduct = indexPath.row
+        print("visible product: \(visibleProduct)")
+        if allCrops[visibleProduct].doRec{
+            print("in \(indexPath)")
+            farmButton.setTitle("Check My \(allCrops[visibleProduct].name) farm", for: .normal)
+            farmButton.isHidden = false
+        }else{
+            farmButton.isHidden = true
+        }
+    }
     
     @objc private func pressedFarm(_ sender: Any){
         print(visibleProduct as Any)
@@ -149,4 +154,56 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
+    
+    
+    func postAlarmo(){
+        let parameters: [String: Any] = [
+            "latitude": GlobalLatitude,
+            "longitude": GlobalLongtitude,
+    //            "temperature": GlobalTemp,
+    //            "humidity": GlobalHum,
+    //            "ph": GlobalPH,
+    //            "nitrogen": GlobalN,
+    //            "phosphorous": GlobalP,
+    //            "potassium": GlobalK,
+        ]
+        
+        let url = "https://cornell-greenlight-backend.azurewebsites.net/api/recommend-crop"
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)["data"]
+                    Globalhumidity_yr_avg = String(json["humidity_yr_avg"].stringValue.prefix(5))
+                    Globallocation_name = json["location_name"].stringValue
+                    Globaltemp_current = String(json["temp_current"].stringValue.prefix(5))
+                    Globaltemp_yr_avg = String(json["temp_yr_avg"].stringValue.prefix(5))
+                    Globalweather_current = String(json["weather_current"].stringValue.prefix(5))
+                    for recommendation in json["recommendations"].array ?? []{
+                        var rec = Recommendations("", rec: false)
+                        rec.name = recommendation["name"].stringValue
+                        rec.humidity = String(recommendation["humidity_lower"].stringValue.prefix(5))
+                        rec.doRec = false
+                        rec.nitrogen = String(recommendation["nitrogen_lower"].stringValue.prefix(5))
+                        rec.ph = String(recommendation["ph_lower"].stringValue.prefix(5))
+                        rec.phosphorous = String(recommendation["phosphorous_lower"].stringValue.prefix(5))
+                        rec.potassium = String(recommendation["potassium_lower"].stringValue.prefix(5))
+                        rec.temp = String(recommendation["temp_lower"].stringValue.prefix(5))
+                        rec.reason = recommendation["reason"].stringValue
+                        rec.profit = recommendation["profit"].stringValue
+                        rec.yield = recommendation["yield"].stringValue
+                        allCrops.append(rec)
+                    }
+                    self.recCollectionView.reloadData()
+                    break
+                case .failure(let error):
+                    debugPrint(error)
+                }
+            }
+        
+    }
+    
+    
+    
 }

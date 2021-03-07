@@ -31,7 +31,7 @@ class FarmController: UIViewController, UITextFieldDelegate{
         navBar = UIView()
         navBar.backgroundColor = UIGreen
         navBar.translatesAutoresizingMaskIntoConstraints = false
-        let title = setBoldText("My \(product.name) Farm")
+        let title = setBoldText("My \(product.name) farm")
         title.textColor = .black
         
         let backButton = UIButton()

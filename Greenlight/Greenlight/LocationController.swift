@@ -43,7 +43,6 @@ class LocationController: UIViewController, CLLocationManagerDelegate {
             print("stopped location")
             print("lltitude: \(GlobalLongtitude), \(GlobalLatitude)")
             locationManager.stopUpdatingLocation()
-            postAlarmo()
         }
     }
     
