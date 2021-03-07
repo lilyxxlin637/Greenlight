@@ -93,7 +93,7 @@ class nkpController: UIViewController, UITextFieldDelegate {
         NSLayoutConstraint.activate([
             
             tempLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            tempLabel.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 120),
+            tempLabel.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 130),
             tempLabel.widthAnchor.constraint(equalToConstant: 180),
             tempLabel.heightAnchor.constraint(equalToConstant: 27),
             
@@ -125,7 +125,7 @@ class nkpController: UIViewController, UITextFieldDelegate {
             
             
             tempField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            tempField.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 120),
+            tempField.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 130),
             tempField.widthAnchor.constraint(equalToConstant: 100),
             tempField.heightAnchor.constraint(equalToConstant: 27),
             
@@ -260,12 +260,12 @@ class nkpController: UIViewController, UITextFieldDelegate {
         let parameters: [String: Any] = [
             "latitude": GlobalLatitude,
             "longitude": GlobalLongtitude,
-            "temperature": GlobalTemp,
-            "humidity": GlobalHum,
-            "ph": GlobalPH,
-            "nitrogen": GlobalN,
-            "phosphorous": GlobalP,
-            "potassium": GlobalK,
+//            "temperature": GlobalTemp,
+//            "humidity": GlobalHum,
+//            "ph": GlobalPH,
+//            "nitrogen": GlobalN,
+//            "phosphorous": GlobalP,
+//            "potassium": GlobalK,
         ]
         
         let url = "http://cornell-greenlight-backend.azurewebsites.net/api/recommend-crop"
@@ -278,7 +278,6 @@ class nkpController: UIViewController, UITextFieldDelegate {
                     break
                 case .failure(let error):
                     debugPrint(error)
-                    
                 }
             }
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import Alamofire
 
 
 
@@ -43,6 +44,7 @@ class LocationController: UIViewController, CLLocationManagerDelegate {
             print("stopped location")
             print("lltitude: \(GlobalLongtitude), \(GlobalLatitude)")
             locationManager.stopUpdatingLocation()
+            postAlarmo()
         }
     }
     
@@ -102,7 +104,6 @@ class LocationController: UIViewController, CLLocationManagerDelegate {
             button.heightAnchor.constraint(equalToConstant: 51),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80)
-        
         ])
         
         button.addTarget(self, action: #selector(pressedEnable), for: .touchUpInside)
@@ -117,7 +118,7 @@ class LocationController: UIViewController, CLLocationManagerDelegate {
                 nextButton.isHidden = false
                 sender.isHidden = true
              default:
-                let vc = nkpController()
+                let vc = RecController()
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion: nil)
                 }
@@ -143,9 +144,35 @@ class LocationController: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc private func pressedNext(_ sender: Any){
-        let vc = nkpController()
+        let vc = RecController()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    func postAlarmo(){
+        let parameters: [String: Any] = [
+            "latitude": GlobalLatitude,
+            "longitude": GlobalLongtitude,
+//            "temperature": GlobalTemp,
+//            "humidity": GlobalHum,
+//            "ph": GlobalPH,
+//            "nitrogen": GlobalN,
+//            "phosphorous": GlobalP,
+//            "potassium": GlobalK,
+        ]
+        
+        let url = "https://cornell-greenlight-backend.azurewebsites.net/api/recommend-crop"
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    debugPrint(response)
+                    break
+                case .failure(let error):
+                    debugPrint(error)
+                }
+            }
     }
     
 
