@@ -40,6 +40,7 @@
 		2A6335FB25F3B09B006433DF /* ProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6335FA25F3B09B006433DF /* ProductController.swift */; };
 		2A63360325F3C42E006433DF /* FarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63360225F3C42E006433DF /* FarmController.swift */; };
 		2A63361225F3F650006433DF /* nkpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63361125F3F650006433DF /* nkpController.swift */; };
+		2A63361A25F48BE3006433DF /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A63361925F48BE1006433DF /* NetworkCall.swift */; };
 		59A218EC1E61BBB006BD0795 /* Pods_GreenlightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4382EA96822BC87B36FDED0F /* Pods_GreenlightTests.framework */; };
 		A0F2A9DCEFF0CAF373F1B07A /* Pods_Greenlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10AA4706C7DB221560A46E93 /* Pods_Greenlight.framework */; };
 		BD36F2AC8EFD3E55A3DB2D59 /* Pods_Greenlight_GreenlightUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10A1FF75BE77EEE22A89394E /* Pods_Greenlight_GreenlightUITests.framework */; };
@@ -105,6 +106,7 @@
 		2A6335FA25F3B09B006433DF /* ProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductController.swift; sourceTree = "<group>"; };
 		2A63360225F3C42E006433DF /* FarmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmController.swift; sourceTree = "<group>"; };
 		2A63361125F3F650006433DF /* nkpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nkpController.swift; sourceTree = "<group>"; };
+		2A63361925F48BE1006433DF /* NetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
 		327A23B0F3F49D92DE23354F /* Pods-Greenlight-GreenlightUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greenlight-GreenlightUITests.debug.xcconfig"; path = "Target Support Files/Pods-Greenlight-GreenlightUITests/Pods-Greenlight-GreenlightUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4382EA96822BC87B36FDED0F /* Pods_GreenlightTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GreenlightTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66181C197813153EA118DA3C /* Pods-Greenlight.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Greenlight.release.xcconfig"; path = "Target Support Files/Pods-Greenlight/Pods-Greenlight.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				2A63357725F33708006433DF /* AppDelegate.swift */,
 				2A63357925F33708006433DF /* SceneDelegate.swift */,
 				2A63357B25F33708006433DF /* LocationController.swift */,
+				2A63361925F48BE1006433DF /* NetworkCall.swift */,
 				2A63361125F3F650006433DF /* nkpController.swift */,
 				2A6335F025F34C0D006433DF /* RecController.swift */,
 				2A6335F525F39050006433DF /* RecCollectionViewCell.swift */,
@@ -512,6 +515,7 @@
 				2A63360325F3C42E006433DF /* FarmController.swift in Sources */,
 				2A63357825F33708006433DF /* AppDelegate.swift in Sources */,
 				2A6335FB25F3B09B006433DF /* ProductController.swift in Sources */,
+				2A63361A25F48BE3006433DF /* NetworkCall.swift in Sources */,
 				2A6335BC25F34006006433DF /* PublicVars.swift in Sources */,
 				2A63361225F3F650006433DF /* nkpController.swift in Sources */,
 				2A63357A25F33708006433DF /* SceneDelegate.swift in Sources */,

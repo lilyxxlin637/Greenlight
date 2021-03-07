@@ -10,7 +10,6 @@ import CoreLocation
 import Alamofire
 
 
-
 class LocationController: UIViewController, CLLocationManagerDelegate {
     var  locationManager = CLLocationManager()
     var navBar: UIView!
@@ -149,31 +148,7 @@ class LocationController: UIViewController, CLLocationManagerDelegate {
         self.present(vc, animated: true, completion: nil)
     }
     
-    func postAlarmo(){
-        let parameters: [String: Any] = [
-            "latitude": GlobalLatitude,
-            "longitude": GlobalLongtitude,
-//            "temperature": GlobalTemp,
-//            "humidity": GlobalHum,
-//            "ph": GlobalPH,
-//            "nitrogen": GlobalN,
-//            "phosphorous": GlobalP,
-//            "potassium": GlobalK,
-        ]
-        
-        let url = "https://cornell-greenlight-backend.azurewebsites.net/api/recommend-crop"
-        
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate()
-            .responseJSON { response in
-                switch response.result {
-                case .success:
-                    debugPrint(response)
-                    break
-                case .failure(let error):
-                    debugPrint(error)
-                }
-            }
-    }
+
     
 
 
