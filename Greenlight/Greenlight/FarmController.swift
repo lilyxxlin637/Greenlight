@@ -73,7 +73,7 @@ class FarmController: UIViewController, UITextFieldDelegate{
     
     func setupText(){
         let tempLabel = setRegText("Temperature:")
-        let humLabel = setRegText("Temperature:")
+        let humLabel = setRegText("Humidity:")
         let phlabel = setRegText("Land PH:")
         let nlabel = setRegText("Nitrogen:")
         let plabel = setRegText("Phosphorous:")

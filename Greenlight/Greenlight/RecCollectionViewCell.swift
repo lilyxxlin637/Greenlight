@@ -38,7 +38,19 @@ class RecCollectionViewCell: UICollectionViewCell{
         productLabel.textAlignment = .center
         self.layer.borderWidth = 5
 
+        var labelHeight = 60
+        
         let reasonLabel = setBoldText("\(rec.profit)\nYield Prediction: \(rec.yield) T/yr")
+        if(recID == 0){
+            reasonLabel.text = "\(rec.profit)\nYield Prediction: \(rec.yield) T/yr\nBlack Aztec\nCountry Gentleman"
+            labelHeight = 120
+
+        }
+        if(recID == 2){
+            reasonLabel.text = "\(rec.profit)\nYield Prediction: \(rec.yield) T/yr\nSwarna Sub1\nIR64-Sub1"
+            labelHeight = 120
+
+        }
         reasonLabel.font = UIFont(name: "Poppins-Medium", size: 18)
         reasonLabel.numberOfLines = 0
         reasonLabel.textAlignment = .center
@@ -55,6 +67,7 @@ class RecCollectionViewCell: UICollectionViewCell{
             recImage.image = UIImage(named: "cross")
             recImage.isHidden = true
             self.layer.borderColor = UIGrey.cgColor
+
         }
         
         contentView.addSubview(productLabel)
@@ -73,7 +86,7 @@ class RecCollectionViewCell: UICollectionViewCell{
             
             reasonLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             reasonLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            reasonLabel.heightAnchor.constraint(equalToConstant: 80),
+            reasonLabel.heightAnchor.constraint(equalToConstant: CGFloat(labelHeight)),
             reasonLabel.topAnchor.constraint(equalTo: productLabel.bottomAnchor, constant: 0),
             
             recImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),

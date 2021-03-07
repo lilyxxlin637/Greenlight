@@ -206,6 +206,7 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)["data"]
+                    print(json)
                     Globalhumidity_yr_avg = String(json["humidity_yr_avg"].stringValue.prefix(5))
                     Globallocation_name = json["location_name"].stringValue
                     Globaltemp_current = String(json["temp_current"].stringValue.prefix(5))
