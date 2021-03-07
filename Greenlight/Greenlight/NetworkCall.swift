@@ -51,7 +51,7 @@ func postAlarmo(){
         .responseJSON { response in
             switch response.result {
             case .success:
-                debugPrint(response)
+//                debugPrint(response)
                 break
             case .failure(let error):
                 debugPrint(error)

@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-var SelectedCrop = [Recommendations]()
 var GlobalTemp = 0.0
 var GlobalHum = 0.0
 var GlobalLatitude = 0.0
@@ -21,6 +20,7 @@ var GlobalK = 0.0
 let UIGreen = UIColor(red: 0.907, green: 0.958, blue: 0.843, alpha: 1)
 let UIBorderGreen = UIColor(red: 0.475, green: 0.788, blue: 0.71, alpha: 1)
 let UIRed = UIColor(red: 0.82, green: 0.443, blue: 0.431, alpha: 1)
+let UIGrey = UIColor(red: 0.867, green: 0.886, blue: 0.922, alpha: 1)
 
 let UIRefFont = UIFont(name: "Poppins-Regular", size: 20)
 let UISemiFont = UIFont(name: "Poppins-SemiBold", size: 30)

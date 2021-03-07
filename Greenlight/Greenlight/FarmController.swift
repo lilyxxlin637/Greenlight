@@ -11,13 +11,15 @@ import UIKit
 
 class FarmController: UIViewController, UITextFieldDelegate{
     var navBar: UIView!
-    var product: Recommendations!
+    var productId: Int!
+    private var product: Recommendations!
     var fillButton: UIButton!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        product = allCrops[productId]
         setupNavigation()
         setupText()
         setupButton()

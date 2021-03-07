@@ -10,7 +10,8 @@ import UIKit
 
 class ProductController: UIViewController{
     var navBar: UIView!
-    var product: Recommendations!
+    var productId: Int!
+    private var product: Recommendations!
     var plantButton: UIButton!
     var removeButton: UIButton!
     var plant: UIImageView!
@@ -21,23 +22,29 @@ class ProductController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-
+    }
+    
+    func setupFullView(){
+        product = allCrops[productId]
         setupNavigation()
         setupText()
         setupButton()
+        setupView()
     }
     
     private func setupView(){
-        if (SelectedCrop.contains(product)){
+        if (allCrops[productId].doRec){
             plantButton.isHidden = true
             removeButton.isHidden = false
             plant.isHidden = false
             question.isHidden = true
+            navBar.backgroundColor = UIBorderGreen
         }else{
             plantButton.isHidden = false
             removeButton.isHidden = true
             plant.isHidden = true
             question.isHidden = false
+            navBar.backgroundColor = UIBorderGreen
         }
         self.delegate?.updateFarmLabel()
     }
@@ -49,12 +56,7 @@ class ProductController: UIViewController{
     
     func setupNavigation(){
         navBar = UIView()
-        if(product.doRec){
-            navBar.backgroundColor = UIBorderGreen
-
-        }else{
-            navBar.backgroundColor = UIRed
-        }
+        navBar.backgroundColor = UIBorderGreen
         navBar.translatesAutoresizingMaskIntoConstraints = false
         let title = setBoldText(product.name)
         title.textColor = .white
@@ -131,14 +133,9 @@ class ProductController: UIViewController{
         removeButton = setGreenButton("Remove this crop")
         removeButton.setTitleColor(.white, for: .normal)
 
-        if(product.doRec){
-            plantButton.backgroundColor = UIBorderGreen
-            removeButton.backgroundColor = UIBorderGreen
-        }else{
-            plantButton.backgroundColor = UIRed
-            removeButton.backgroundColor = UIRed
+        plantButton.backgroundColor = UIBorderGreen
+        removeButton.backgroundColor = UIBorderGreen
 
-        }
         
         view.addSubview(removeButton)
         view.addSubview(plantButton)
@@ -162,21 +159,15 @@ class ProductController: UIViewController{
     }
     
     @objc private func pressedPlant(_ sender: Any){
-        SelectedCrop.append(self.product)
-        print(SelectedCrop)
+        allCrops[productId].doRec = true
         setupView()
+        delegate?.updateFarmLabel()
     }
     
     @objc private func pressedRemove(_ sender: Any){
-        let old = SelectedCrop
-        SelectedCrop.removeAll()
-        for p in old{
-            if p.name != product.name{
-                SelectedCrop.append(p)
-            }
-        }
-        print(SelectedCrop)
+        allCrops[productId].doRec = false
         setupView()
+        delegate?.updateFarmLabel()
     }
     
 }

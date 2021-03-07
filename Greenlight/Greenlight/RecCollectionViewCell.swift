@@ -22,7 +22,19 @@ class RecCollectionViewCell: UICollectionViewCell{
         super.init(frame: frame)
     }
     
-    func setupView(_ rec: Recommendations){
+    override func prepareForReuse() {
+        let theSubviews: Array = self.contentView.subviews
+        for view in theSubviews
+        {
+            view.removeFromSuperview()
+        }
+    }
+    
+    func setupView(_ recID: Int){
+        print("id:\(recID)")
+        let rec = allCrops[recID]
+        print(rec)
+
         let productLabel = setBoldText(rec.name)
         productLabel.font = UIFont(name: "Poppins-Bold", size: 50)
         productLabel.textAlignment = .center
@@ -33,7 +45,7 @@ class RecCollectionViewCell: UICollectionViewCell{
 
         reasonLabel.textAlignment = .center
         
-        let recLabel = setBoldText("We Recommend")
+        let recLabel = setBoldText("I want to plant")
         recLabel.font = UIFont(name: "Poppins-Bold", size: 20)
         let recImage = UIImageView()
         recImage.translatesAutoresizingMaskIntoConstraints = false
@@ -42,8 +54,8 @@ class RecCollectionViewCell: UICollectionViewCell{
             self.layer.borderColor = UIBorderGreen.cgColor
         }else{
             recImage.image = UIImage(named: "cross")
-            recLabel.text = "Do Not Recommend"
-            self.layer.borderColor = UIRed.cgColor
+            recImage.isHidden = true
+            self.layer.borderColor = UIGrey.cgColor
         }
         
         contentView.addSubview(productLabel)

@@ -13,24 +13,21 @@ protocol UpdateProtocol{
 }
 
 
+var allCrops:[Recommendations] = [Recommendations("Corn",rec:false), Recommendations("Grape",rec:false), Recommendations("Apple", rec:false)]
+
 class RecController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UpdateProtocol{
     
     func updateFarmLabel() {
-        if(SelectedCrop.contains(visibleProduct)){
-            farmButton.setTitle("Check My \(visibleProduct.name) Farm", for: .normal)
-            farmButton.isHidden = false
-        }else{
-            farmButton.isHidden = true
-        }
+        recCollectionView.reloadData()
     }
     
     
-    private var recommendations:[Recommendations] = [Recommendations("Corn",rec:true), Recommendations("Grape",rec:true), Recommendations("Apple", rec:false)]
+
     private var recCollectionView: UICollectionView!
     
     private var navBar: UIView!
     private var farmButton: UIButton!
-    private var visibleProduct: Recommendations!
+    private var visibleProduct: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +35,12 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
         
         setupNavigation()
         setupCollectionView()
-        visibleProduct = recommendations[0]
+        visibleProduct = 0
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        recCollectionView.reloadData()
+    }
     
     func setupNavigation(){
         navBar = UIView()
@@ -111,47 +111,42 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        recommendations.count
+        allCrops.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = recCollectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! RecCollectionViewCell
-        cell.setupView(recommendations[indexPath.row])        
+        cell.setupView(indexPath.item)
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let product = recommendations[indexPath.item]
         let vc = ProductController()
-        vc.product = product
+        vc.productId = indexPath.item
+        vc.setupFullView()
         vc.delegate = self
         self.present(vc, animated: true, completion: nil)
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let product = recommendations[indexPath.item]
-        visibleProduct = product
-        print("visible product: \(visibleProduct)")
-        if SelectedCrop.contains(visibleProduct){
-            print("in \(indexPath)")
-            farmButton.setTitle("Check my \(visibleProduct.name) farm", for: .normal)
-            farmButton.isHidden = false
-            
-        }else{
-            farmButton.isHidden = true
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        visibleProduct = indexPath.row
+//        print("visible product: \(visibleProduct)")
+//        if allCrops[visibleProduct].doRec{
+//            print("in \(indexPath)")
+//            farmButton.setTitle("Check My \(allCrops[visibleProduct].name) Farm", for: .normal)
+//            farmButton.isHidden = false
+//        }else{
+//            farmButton.isHidden = true
+//        }
+//    }
     
     @objc private func pressedFarm(_ sender: Any){
         print(visibleProduct as Any)
         let vc = FarmController()
-        vc.product = visibleProduct
+        vc.productId = visibleProduct
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
     }
-    
-    
-    
 }
