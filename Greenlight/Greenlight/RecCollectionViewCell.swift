@@ -43,11 +43,12 @@ class RecCollectionViewCell: UICollectionViewCell{
         reasonLabel.numberOfLines = 0
         reasonLabel.textAlignment = .center
         
-        let recLabel = setBoldText("I want to plant")
+        let recLabel = setBoldText("Click to checkout")
         recLabel.font = UIFont(name: "Poppins-Bold", size: 20)
         let recImage = UIImageView()
         recImage.translatesAutoresizingMaskIntoConstraints = false
         if(rec.doRec){
+            recLabel.text = "I want to plant"
             recImage.image = UIImage(named: "tick")
             self.layer.borderColor = UIBorderGreen.cgColor
         }else{

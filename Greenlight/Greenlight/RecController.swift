@@ -68,9 +68,40 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
         ])
     }
     
+    private func setupFarmView(){
+        let today = UIImageView()
+        today.image = UIImage(named: "today_title")
+        print("global weather type")
+        print(Globalweather_current)
+        
+        let label = setRegText("Location:\nTemperature: \nHumidity: \nWeather:")
+        label.textAlignment = .left
+        
+        let content = setRegText("\(Globallocation_name)\n\(Globaltemp_current)C\n\(Globalhumidity_yr_avg)%\n\(Globalweather_current)")
+        content.textAlignment = .right
+        
+        view.addSubview(label)
+        view.addSubview(content)
+        
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 30),
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            label.widthAnchor.constraint(equalToConstant: 175),
+            label.heightAnchor.constraint(equalToConstant: 150),
+            
+            content.topAnchor.constraint(equalTo: label.topAnchor),
+            content.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            content.widthAnchor.constraint(equalToConstant: 130),
+            content.bottomAnchor.constraint(equalTo: label.bottomAnchor)
+        ])
+    }
+    
+    
+    
+    
     private func setupCollectionView(){
         farmButton = UIButton()
-        farmButton.setTitle("Check My farm", for: .normal)
+        farmButton.setTitle("Check my farm", for: .normal)
         farmButton.titleLabel?.font = UIFont(name: "Poppins-Bold", size: 20)
         farmButton.contentHorizontalAlignment = .right
         farmButton.setTitleColor(.black, for: .normal)
@@ -179,7 +210,7 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
                     Globallocation_name = json["location_name"].stringValue
                     Globaltemp_current = String(json["temp_current"].stringValue.prefix(5))
                     Globaltemp_yr_avg = String(json["temp_yr_avg"].stringValue.prefix(5))
-                    Globalweather_current = String(json["weather_current"].stringValue.prefix(5))
+                    Globalweather_current = String(json["weather_current"].stringValue)
                     for recommendation in json["recommendations"].array ?? []{
                         var rec = Recommendations("", rec: false)
                         rec.name = recommendation["name"].stringValue
@@ -194,8 +225,10 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
                         rec.profit = recommendation["profit"].stringValue
                         rec.yield = recommendation["yield"].stringValue
                         allCrops.append(rec)
+                        
                     }
                     self.recCollectionView.reloadData()
+                    self.setupFarmView()
                     break
                 case .failure(let error):
                     debugPrint(error)

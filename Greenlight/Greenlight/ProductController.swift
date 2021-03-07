@@ -79,7 +79,7 @@ class ProductController: UIViewController{
         let label = setRegText("Temperature: \nHumidity: \nLand PH: \nNitrogen: \nPhosphorous: \nPotassium:")
         label.textAlignment = .left
         
-        let content = setRegText("\(product.temp)\n\(product.humidity)\n\(product.ph)\n\(product.nitrogen)\n\(product.phosphorous)\n\(product.potassium)")
+        let content = setRegText("\(product.temp)C\n\(product.humidity)%\n\(product.ph)\n\(product.nitrogen)\n\(product.phosphorous)\n\(product.potassium)")
         content.textAlignment = .right
         
         let image = UIImageView()

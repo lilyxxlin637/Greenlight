@@ -14,6 +14,13 @@ class FarmController: UIViewController, UITextFieldDelegate{
     var productId: Int!
     private var product: Recommendations!
     var fillButton: UIButton!
+    
+    var phfield: UITextField!
+    var pfield: UITextField!
+    var nfield: UITextField!
+    var kfield: UITextField!
+    var tempField: UITextField!
+    var humField: UITextField!
 
     
     override func viewDidLoad() {
@@ -69,10 +76,10 @@ class FarmController: UIViewController, UITextFieldDelegate{
         let plabel = setRegText("Phosphorous:")
         let klabel = setRegText("Potassium:")
         
-        let phfield = setTextfield("PH")
-        let nfield = setTextfield("N")
-        let pfield = setTextfield("P")
-        let kfield = setTextfield("K")
+        phfield = setTextfield("PH")
+        nfield = setTextfield("N")
+        pfield = setTextfield("P")
+        kfield = setTextfield("K")
         
         
         view.addSubview(phlabel)
@@ -187,4 +194,20 @@ class FarmController: UIViewController, UITextFieldDelegate{
         textField.textColor = UIRed
     }
 
+    
+    
+    @objc private func pressedAutoFill(_ sender: Any){
+        phfield.text = "6.5"
+        pfield.text = "42"
+        nfield.text = "9.0"
+        kfield.text = "43"
+        
+
+        GlobalPH = 6.5
+        GlobalP = 42
+        GlobalN = 9.0
+        GlobalK = 43
+        print("\(GlobalTemp), \(GlobalHum), \(GlobalPH), \(GlobalP), \(GlobalN), \(GlobalK)")
+
+    }
 }
