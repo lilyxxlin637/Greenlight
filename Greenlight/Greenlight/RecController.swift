@@ -51,7 +51,7 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
         navBar = UIView()
         navBar.backgroundColor = UIGreen
         navBar.translatesAutoresizingMaskIntoConstraints = false
-        let title = setBoldText("Land Overview")
+        let title = setBoldText("Overview")
         
         navBar.addSubview(title)
         view.addSubview(navBar)
@@ -171,7 +171,7 @@ class RecController: UIViewController, UICollectionViewDelegate, UICollectionVie
         print("visible product: \(visibleProduct)")
         if allCrops[visibleProduct].doRec{
             print("in \(indexPath)")
-            farmButton.setTitle("Check My \(allCrops[visibleProduct].name) farm", for: .normal)
+            farmButton.setTitle("Check my \(allCrops[visibleProduct].name) farm", for: .normal)
             farmButton.isHidden = false
         }else{
             farmButton.isHidden = true
